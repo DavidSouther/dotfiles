@@ -1,0 +1,59 @@
+[user]
+	name = David Souther
+	email = davidsouther@gmail.com
+[core]
+#	autocrlf = input
+	excludesfile = /home/southerd/.gitignore_global
+
+[color]
+    ui = true
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[color]
+    ui = true
+[color "diff"]
+    whitespace = red reverse
+
+[alias]
+    st = status
+    stat = status
+    ci = commit
+    br = branch
+    co = checkout
+    cob = checkout -b
+    df = diff
+    dif = diff
+    dc = diff --cached
+    ls = ls-files
+
+    # Show files ignored by git:
+    ign = ls-files -o -i --exclude-standard
+    #shows a graph of all the changes in the last 24 hours, graphed out with branches and file names
+    todaysChanges = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+     
+    #color code and format the logs
+    plog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+[merge]
+	tool = vimdiff
+[credential]
+	helper = cache
+[github-flow]
+	username = DavidSouther
+[push]
+	default = simple
+[rerere]
+	enabled = true
+[url "https://"]
+	insteadOf = git://
