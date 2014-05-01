@@ -37,23 +37,24 @@
     dc = diff --cached
     ls = ls-files
 
+    commend = blame
+
     # Show files ignored by git:
     ign = ls-files -o -i --exclude-standard
-    #shows a graph of all the changes in the last 24 hours, graphed out with branches and file names
-    todaysChanges = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
-     
+
     #color code and format the logs
     plog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+    #shows a graph of all the changes in the last 24 hours, graphed out with branches and file names
+    today = plog --stat --since='1 Day Ago'
 
 [merge]
 	tool = vimdiff
 [credential]
-	helper = cache
+	helper = osxkeychain
 [github-flow]
 	username = DavidSouther
 [push]
 	default = simple
 [rerere]
 	enabled = true
-[url "https://"]
-	insteadOf = git://
