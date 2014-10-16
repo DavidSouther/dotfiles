@@ -23,25 +23,9 @@ export CLICOLOR=xterm-color
 # Git completion
 source ~/.zsh-git-prompt
 
-#autoload -U promptinit
-#promptinit
-#prompt bart
-
-[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
-nvm use default 2>&1 >/dev/null
-
-PROMPT='
-%88>..>%{%F{red}%}%m%b%f%k%9(v. . %{%F{blue}%}%(?.[.%20(?.[%U.%S[))%7v%(?.].%20(?.%u].]%s))%b%f%k )%{%F{default}%}%8~%b%f%k%<<%8v%73(l. . %{%F{default}%}%D%b%f%k)%81(l.. %{%F{red}%}%@%b%f%k)%9(v.
-%{%F{blue}%}%(?.[.%20(?.[%U.%S[))%7v%(?.].%20(?.%u].]%s))%b%f%k.)
-%# '
-
 bindkey -M vicmd '?' history-incremental-search-backward
 
 [ -f ~/.profile ] && . ~/.profile
 
 # added by travis gem
-source /home/southerd/.travis/travis.sh
-
-# added by github-flow
-export PATH="/home/southerd/.ghf/bin:$PATH"
-
+[ -f /Users/southerd/.travis/travis.sh ] && source /Users/southerd/.travis/travis.sh
