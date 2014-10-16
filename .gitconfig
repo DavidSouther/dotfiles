@@ -48,6 +48,9 @@
     #shows a graph of all the changes in the last 24 hours, graphed out with branches and file names
     today = plog --stat --since='1 Day Ago'
 
+    take-theirs = checkout --theirs $(git diff --name-only --diff-filter=U)
+    add-theirs = add $(git diff --name-only --diff-filter=U)
+
 [merge]
 	tool = vimdiff
 [credential]
@@ -58,3 +61,12 @@
 	default = simple
 [rerere]
 	enabled = true
+
+[diff "zip"]
+    textconv = unzip -v
+
+[diff "bin"]
+    textconv = hexdup -vC
+
+[diff "xcuserstate"]
+    textconv = hexdup -vC
