@@ -1,4 +1,7 @@
 alias ls="ls --color --group-directories-first -X"
+alias ll="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
 alias gti="git"
 alias npmisd="npm install --save-dev"
 alias npmis="npm install --save"
