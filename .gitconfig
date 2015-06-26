@@ -1,9 +1,9 @@
 [user]
-	name = David Souther
-	email = davidsouther@gmail.com
+    name = David Souther
+    email = davidsouther@gmail.com
 [core]
-#	autocrlf = input
-	excludesfile = /home/southerd/.gitignore_global
+#   autocrlf = input
+    excludesfile = /home/southerd/.gitignore_global
 
 [color]
     ui = true
@@ -52,15 +52,15 @@
     add-theirs = add $(git diff --name-only --diff-filter=U)
 
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [github-flow]
-	username = DavidSouther
+    username = DavidSouther
 [push]
-	default = simple
+    default = simple
 [rerere]
-	enabled = true
+    enabled = true
 
 [diff "zip"]
     textconv = unzip -v
