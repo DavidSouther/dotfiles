@@ -33,8 +33,8 @@ bindsym $mod2+Shift+e exit
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn "pango: DejaVu Sans 10"' 
-bindsym $mod+Space exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn "pango: DejaVu Sans 10"' 
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn "pango: DejaVu Sans 10"'
+bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn "pango: DejaVu Sans 10"' 
 
 # Screen locker
 bindsym Control+Mod1+l exec i3-msg workspace 1 && i3lock -c 111111 d
@@ -110,9 +110,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Refresh monitors
-bindsym $mod+Shift+m exec /home/southerd/bin/screens
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -121,21 +118,19 @@ mode "resize" {
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
-bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
-bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
+#bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
+#bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
 # TODO replace with set-sink-mute toggle
-bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume 0 0
+#bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume 0 0
 #exec pactl set-sink-volume 0  -- '20%' &
-bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
+#bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
+#bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
 
 # Start i3bar to display a workspace bar (plus the system information i3status j finds out, if available)
 bar {
