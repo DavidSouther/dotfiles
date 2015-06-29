@@ -2,7 +2,7 @@
     name = David Souther
     email = davidsouther@gmail.com
 [core]
-#   autocrlf = input
+    autocrlf = input
     excludesfile = /home/southerd/.gitignore_global
 
 [color]
