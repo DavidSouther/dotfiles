@@ -70,3 +70,6 @@
 
 [diff "xcuserstate"]
     textconv = hexdup -vC
+
+[url "https://"]
+    insteadOf = git://
