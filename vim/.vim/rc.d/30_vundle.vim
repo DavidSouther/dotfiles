@@ -11,7 +11,7 @@ Plugin 'leafgarland/typescript-vim' " Typescript syntax.
 "Plugin 'Quramy/tsuquyomi' " Typescript completions.
 "Plugin 'kein/ctrlp.vim' " Ctrl + P Fuzzy Finder
 Plugin 'ap/vim-buftabline' " Treat buffers themselves as the tabline
-Plugin valloric/YouCompleteMe
+Plugin 'valloric/YouCompleteMe'
 call vundle#end()
 
 filetype plugin indent on

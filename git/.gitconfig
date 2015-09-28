@@ -4,6 +4,8 @@
 [core]
     autocrlf = input
     excludesfile = /home/southerd/.gitignore_global
+    attributesfile = ~/.gitattributes
+    pager = bash -lc 'diff-highlight | clean_diff | less -r' -
 
 [color]
     ui = true
