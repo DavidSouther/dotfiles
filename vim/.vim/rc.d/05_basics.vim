@@ -1,5 +1,5 @@
 set number
-set listchars=tab:▸\ 
+set listchars=tab:▸\ ,trail:💩
 set list
 set nolist
 set linebreak

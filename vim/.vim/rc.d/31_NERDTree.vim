@@ -11,3 +11,5 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 nnoremap <C-g> :NERDTreeToggle<CR>
 nnoremap <Leader>g :NERDTreeToggle<CR>
 nnoremap <Leader>f :NERDTreeFind<CR>
+nnoremap <Leader>r :vertical resize 30<CR>
+

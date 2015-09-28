@@ -37,7 +37,7 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn "pang
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn "pango: DejaVu Sans 10"' 
 
 # Screen locker
-bindsym Control+Mod1+l exec i3-msg workspace 1 && i3lock -c 111111 d
+bindsym Control+Mod1+l exec i3lock -c 111111 d
 
 # change focus
 bindsym $mod+h focus left
@@ -102,6 +102,7 @@ bindsym $mod+u border toggle
 # A single floating container to jump between
 bindsym $mod+Shift+o move scratchpad
 bindsym $mod+o scratchpad show
+bindsym $mod+x floating disable ; floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

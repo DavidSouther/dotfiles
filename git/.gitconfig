@@ -29,6 +29,7 @@
     st = status
     stat = status
     ci = commit
+    ciw = commit -m 'woot'
     br = branch
     co = checkout
     cob = checkout -b
@@ -44,6 +45,7 @@
 
     #color code and format the logs
     plog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    splog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --stat
 
     #shows a graph of all the changes in the last 24 hours, graphed out with branches and file names
     today = plog --stat --since='1 Day Ago'
@@ -71,4 +73,5 @@
 [diff "xcuserstate"]
     textconv = hexdup -vC
 [url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
+
