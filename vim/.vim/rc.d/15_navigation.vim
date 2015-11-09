@@ -6,9 +6,6 @@ nnoremap <C-H> <C-W><C-H>
 
 " Tab Navigation Shortcuts
 set hidden " Allow background buffers.
-"nnoremap <C-S-H> :bnext<CR>
-"nnoremap <C-S-L> :bprev<CR>
-nnoremap <leader><C-i> :bprev<CR>
-nnoremap <leader>h :bprev<CR>
-nnoremap <leader>l :bnext<CR>
-nnoremap <leader>d :bd<CR>
+nnoremap <leader>h <C-W><C-L>:bprev<CR>
+nnoremap <leader>l <C-W><C-L>:bnext<CR>
+nnoremap <leader>d <C-W><C-L>:bd<CR>:bnext<CR>
