@@ -14,7 +14,7 @@ export HISTFILE=~/.histfile
 export HISTSIZE=1000
 export SAVEHIST=30000
 export HISTCONTROL=ignoredups
-setopt appendhistory autocd extendedglob nomatch notify
+setopt appendhistory sharehistory autocd extendedglob nomatch notify
 unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
