@@ -20,7 +20,9 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+g exec google-chrome 
+bindsym $mod+g exec google-chrome
+bindsym $mod+s exec vscode
+bindsym $mod+a exec atom
 
 # kill focused window
 bindsym $mod2+Shift+q kill
@@ -149,7 +151,9 @@ hide_edge_borders both
 # Custom window styling
 for_window [title="VIM"] border 1pixel
 for_window [title="Terminal"] border 1pixel
-for_window [title="Google Chrome"] border 1pixel 
+for_window [title="Google Chrome"] border 1pixel
+for_window [title="Dart Analysis"] border 1pixel
+for_window [title="Visual Studio Code"] border 1pixel
 
 # state                 border  bg      text    indicator
 client.focused          #000000 #97c3e0 #000000 #000000
