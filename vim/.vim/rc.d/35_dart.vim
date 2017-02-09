@@ -1,0 +1,1 @@
+:command Fmt !dartfmt -w %
