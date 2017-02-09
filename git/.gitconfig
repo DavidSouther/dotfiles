@@ -3,7 +3,7 @@
     email = davidsouther@gmail.com
 [core]
     autocrlf = input
-    excludesfile = /home/southerd/.gitignore_global
+	excludesfile = /usr/local/google/home/dsouther/.gitignore_global
     attributesfile = ~/.gitattributes
     pager = bash -lc 'diff-highlight | clean_diff | less -r' -
 
