@@ -14,7 +14,3 @@ export PATH=$(\
     awk '{print $2}' | \
     tr '\n' ':' \
 )
-
-
-# GOOGLE ONLY
-goog3

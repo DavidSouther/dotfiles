@@ -1,11 +1,10 @@
 [user]
     name = David Souther
-    email = davidsouther@gmail.com
+    email = davidsouther+github@gmail.com
 [core]
     autocrlf = input
-	excludesfile = /usr/local/google/home/dsouther/.gitignore_global
-    attributesfile = ~/.gitattributes
     pager = bash -lc 'diff-highlight | clean_diff | less -r' -
+    editor = /usr/bin/vim
 
 [color]
     ui = true
@@ -57,10 +56,6 @@
 
 [merge]
     tool = vimdiff
-[credential]
-    helper = osxkeychain
-[github-flow]
-    username = DavidSouther
 [push]
     default = simple
 [rerere]
@@ -74,6 +69,3 @@
 
 [diff "xcuserstate"]
     textconv = hexdup -vC
-
-[url "https://"]
-    insteadOf = git://
