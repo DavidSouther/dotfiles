@@ -1,3 +1,0 @@
-" Wrapping
-
-set nowrap
