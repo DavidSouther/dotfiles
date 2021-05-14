@@ -3,28 +3,7 @@
     email = davidsouther+github@gmail.com
 [core]
     autocrlf = input
-    pager = bash -lc 'diff-highlight | clean_diff | less -r' -
     editor = /usr/bin/vim
-
-[color]
-    ui = true
-[color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-[color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
-[color]
-    ui = true
-[color "diff"]
-    whitespace = red reverse
 
 [alias]
     st = status
@@ -54,8 +33,6 @@
     take-theirs = checkout --theirs $(git diff --name-only --diff-filter=U)
     add-theirs = add $(git diff --name-only --diff-filter=U)
 
-[merge]
-    tool = vimdiff
 [push]
     default = simple
 [rerere]
@@ -65,7 +42,4 @@
     textconv = unzip -v
 
 [diff "bin"]
-    textconv = hexdup -vC
-
-[diff "xcuserstate"]
     textconv = hexdup -vC
