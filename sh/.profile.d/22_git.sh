@@ -1,1 +1,1 @@
-PATH="$PATH:~/git-bin"
+# PATH="$PATH:~/git-bin"

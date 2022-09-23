@@ -1,5 +1,3 @@
 #!/bin/bash
 
-sudo apt install stow
-
-stow -t $HOME -R vim zsh vscode
+stow -t $HOME -R sh vim zsh vscode
