@@ -1,0 +1,7 @@
+#!/bin/sh
+
+git commit --all --amend --message "$(git show HEAD -s --pretty=format:%s)"
+
+shopt -s extglob
+
+[[ "$@" == *"--push"* ]] && git push --force
