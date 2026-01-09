@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git commit --all --amend --message "$(git show HEAD -s --pretty=format:%s)"
+git commit --all --amend --no-edit
 
 shopt -s extglob
 
