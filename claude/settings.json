@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(*)",
+      "Read(*)",
+      "mcp__claude_ai_*",
+      "Bash(gh search *)"
+    ]
+  },
+  "model": "sonnet[1m]",
+  "enabledPlugins": {
+    "developer@ailly": true,
+    "domain@ailly": true,
+    "general@ailly": true,
+    "patterns@ailly": true,
+    "research@ailly": true,
+    "characters@ailly": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "ailly": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/david/devel/davidsouther/domain-driven-design"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "theme": "auto"
+}
