@@ -14,3 +14,4 @@ export PATH=$(\
     awk '{print $2}' | \
     tr '\n' ':' \
 )
+. "$HOME/.cargo/env"
