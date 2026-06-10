@@ -19,38 +19,48 @@ parse_git_branch() {
   (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
 }
 
-# Show different symbols as appropriate for various Git repository states
+# Show different symbols as appropriate for various Git repository states.
+# This runs on every prompt, so it uses as few git subprocesses as possible:
+# one rev-list for ahead/behind and one `git status` (a single worktree walk)
+# for untracked/modified/staged, instead of the original seven calls.
 parse_git_state() {
 
   # Compose this value via multiple conditional appends.
   local GIT_STATE=""
 
-  local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
-  if [ "$NUM_AHEAD" -gt 0 ]; then
-    GIT_STATE=$GIT_STATE${GIT_PROMPT_AHEAD//NUM/$NUM_AHEAD}
-  fi
-
-  local NUM_BEHIND="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
-  if [ "$NUM_BEHIND" -gt 0 ]; then
-    GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
+  # Ahead/behind upstream in a single call: output is "<behind>\t<ahead>".
+  local counts="$(git rev-list --count --left-right @{upstream}...HEAD 2> /dev/null)"
+  if [[ -n $counts ]]; then
+    local NUM_BEHIND="${counts%%[[:space:]]*}"
+    local NUM_AHEAD="${counts##*[[:space:]]}"
+    if [ "$NUM_AHEAD" -gt 0 ]; then
+      GIT_STATE=$GIT_STATE${GIT_PROMPT_AHEAD//NUM/$NUM_AHEAD}
+    fi
+    if [ "$NUM_BEHIND" -gt 0 ]; then
+      GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
+    fi
   fi
 
   local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
-  if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
+  if [ -n "$GIT_DIR" ] && test -r "$GIT_DIR/MERGE_HEAD"; then
     GIT_STATE=$GIT_STATE$GIT_PROMPT_MERGING
   fi
 
-  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_UNTRACKED
-  fi
+  # Untracked / modified / staged from one porcelain walk. Each line is "XY ...":
+  # X = index (staged) status, Y = worktree (modified) status, "??" = untracked.
+  local untracked='' modified='' staged='' line
+  while IFS= read -r line; do
+    if [[ ${line[1,2]} == '??' ]]; then
+      untracked=1
+    else
+      [[ ${line[2]} == [MTD]    ]] && modified=1
+      [[ ${line[1]} == [MTADRC] ]] && staged=1
+    fi
+  done < <(git status --porcelain 2> /dev/null)
 
-  if ! git diff --quiet 2> /dev/null; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_MODIFIED
-  fi
-
-  if ! git diff --cached --quiet 2> /dev/null; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_STAGED
-  fi
+  [[ -n $untracked ]] && GIT_STATE=$GIT_STATE$GIT_PROMPT_UNTRACKED
+  [[ -n $modified  ]] && GIT_STATE=$GIT_STATE$GIT_PROMPT_MODIFIED
+  [[ -n $staged    ]] && GIT_STATE=$GIT_STATE$GIT_PROMPT_STAGED
 
   if [[ -n $GIT_STATE ]]; then
     echo "$GIT_PROMPT_PREFIX$GIT_STATE$GIT_PROMPT_SUFFIX"

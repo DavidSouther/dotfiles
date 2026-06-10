@@ -3,10 +3,9 @@
 #prompt bart
 
 function precmd {
-    if [ git status > /dev/null 2>&1 ] ; then
-        cd "$(git rev-parse --show-toplevel)"
-    fi
-    echo -ne "\e]1;$(basename $(pwd))\a"
+    # Set the terminal-tab title to the current directory's basename.
+    # %1~ is prompt expansion (no subprocess); the old form forked basename+pwd.
+    print -Pn "\e]1;%1~\a"
 }
 
 PROMPT='

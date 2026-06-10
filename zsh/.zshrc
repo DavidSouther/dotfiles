@@ -2,7 +2,16 @@ zstyle ':completion:*' completer _complete
 zstyle ':completion:*' squeeze-slashes true
 
 autoload -Uz compinit
-compinit
+# Cache the completion dump: the full security audit + dump rebuild costs ~0.2s.
+# If a dump modified within the last day exists, load it with -C (skip the audit);
+# otherwise run the full compinit, which regenerates the dump.
+_zdump_fresh=( ${ZDOTDIR:-$HOME}/.zcompdump(Nmh-24) )
+if (( $#_zdump_fresh )); then
+  compinit -C
+else
+  compinit
+fi
+unset _zdump_fresh
 
 export HISTFILE=~/.histfile
 export HISTSIZE=1000
@@ -21,6 +30,5 @@ bindkey -M vicmd '?' history-incremental-search-backward
 
 [ -f ~/.profile ] && . ~/.profile
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+hash -r
+
