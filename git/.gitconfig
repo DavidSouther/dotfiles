@@ -1,48 +1,56 @@
 [user]
     name = David Souther
     email = davidsouther+github@gmail.com
+[include]
+    path = ~/.gitconfig-signing
 [core]
     autocrlf = input
-    pager = bash -lc 'diff-highlight | clean_diff | less -r' -
+    # pager = bash -lc 'diff-highlight | clean_diff | less -r' -
     editor = /usr/bin/vim
-
-[color]
-    ui = true
-[color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-[color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
-[color]
-    ui = true
-[color "diff"]
-    whitespace = red reverse
+    # excludesfile = ~/.gitignore
+    # Uncomment if large repositories get slow
+    # fsmonitor = true
+    # untrackedCache = true
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+[init]
+    defaultBranch = main
+[diff]
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+[merge]
+    conflictstyle = zdiff3
+    tool = vimdiff
+[pull]
+    rebase = true
+[commit]
+    verbose = true
+[push]
+    default = simple
+    autoSetupRemote = true
+    followTags = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+[rerere]
+    enabled = true
+    autoupdate = true
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+[help]
+    autocorrect = prompt
 
 [alias]
-    st = status
-    stat = status
-    ci = commit
-    ciw = commit -m 'woot'
-    br = branch
-    co = checkout
-    cob = checkout -b
-    df = diff
-    dif = diff
-    dc = diff --cached
-    ls = ls-files
-
     commend = blame
-
-    # Show files ignored by git:
-    ign = ls-files -o -i --exclude-standard
 
     #color code and format the logs
     plog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -53,19 +61,4 @@
 
     take-theirs = checkout --theirs $(git diff --name-only --diff-filter=U)
     add-theirs = add $(git diff --name-only --diff-filter=U)
-
-[merge]
-    tool = vimdiff
-[push]
-    default = simple
-[rerere]
-    enabled = true
-
-[diff "zip"]
-    textconv = unzip -v
-
-[diff "bin"]
-    textconv = hexdup -vC
-
-[diff "xcuserstate"]
-    textconv = hexdup -vC
+    update = commit --all --amend --no-edit

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-git commit --all --amend --no-edit
-
-shopt -s extglob
-
-[[ "$@" == *"--push"* ]] && git push --force

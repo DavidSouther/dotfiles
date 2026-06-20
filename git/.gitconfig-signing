@@ -1,0 +1,4 @@
+[user]
+	signingkey = /Users/davidsouther/.ssh/id_ed25519
+[gpg]
+	format = ssh
