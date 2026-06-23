@@ -9,6 +9,8 @@ precmd() {
     local repo_name=$(basename "$repo_root")
     local rel_path="${PWD#$repo_root}"
     export DISPLAY_PATH="%F{yellow}.../$repo_name%F{magenta}[$branch]%F{yellow}$rel_path%f"
+  else
+    export DISPLAY_PATH="${PWD/$HOME/~}"
   fi
 
   if [ $exit_code -ne 0 ]; then

@@ -1,0 +1,56 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Slack__*",
+      "mcp__claude_ai_Notion__*",
+      "mcp__claude_ai_Linear__*",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(cargo check *)",
+      "Bash(cargo build *)",
+      "Bash(cargo clippy *)",
+      "Bash(cargo fmt *)",
+      "Bash(cargo doc *)",
+      "Bash(cargo test *)",
+      "Bash(cargo nextest *)",
+      "Bash(cargo run *)",
+      "Bash(cargo add *)",
+      "Bash(cargo init *)",
+      "Bash(mise run *)",
+      "Bash(git switch *)",
+      "Bash(git add *)",
+      "Bash(git commit -m *)",
+      "Bash(git stash *)",
+      "Bash(gh api *)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "sonnet",
+  "enabledPlugins": {
+    "developer@ailly": true,
+    "domain@ailly": true,
+    "general@ailly": true,
+    "patterns@ailly": true,
+    "research@ailly": true,
+    "characters@ailly": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "ailly": {
+      "source": {
+        "source": "github",
+        "repo": "DavidSouther/domain-driven-design"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "theme": "auto",
+  "agentPushNotifEnabled": true
+}

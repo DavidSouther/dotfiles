@@ -7,7 +7,9 @@ brew bundle
 
 stow -t $HOME -R claude git fish sh ssh vim zsh
 
-chsh -s fish "$USER"
+FISH="$(which fish)"
+rg "$FISH" /etc/shells 2>&1 >/dev/null || sudo bash -c "echo \"$FISH\" >> /etc/shells"
+chsh -s "$FISH" "$USER"
 
 git clone https://github.com/VundleVim/Vundle.vim.git \
   ~/.vim/bundle/Vundle.vim >/dev/null 2>&1

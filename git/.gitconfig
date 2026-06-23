@@ -1,14 +1,14 @@
 [user]
     name = David Souther
     email = davidsouther+github@gmail.com
+	signingkey = ~/.ssh/id_ed25519
+[include]
+    path = ~/.gitconfig-user-local
 [gpg]
 	format = ssh
-[include]
-    path = ~/.gitconfig-signing
 [core]
     autocrlf = input
     editor = /usr/bin/vim
-	signingkey = ~/.ssh/id_ed25519.pub
     # excludesfile = ~/.gitignore
     ## Uncomment if large repositories get slow
     # fsmonitor = true
