@@ -1,22 +1,24 @@
 [user]
     name = David Souther
     email = davidsouther+github@gmail.com
+[gpg]
+	format = ssh
 [include]
     path = ~/.gitconfig-signing
 [core]
     autocrlf = input
-    # pager = bash -lc 'diff-highlight | clean_diff | less -r' -
     editor = /usr/bin/vim
+	signingkey = ~/.ssh/id_ed25519.pub
     # excludesfile = ~/.gitignore
-    # Uncomment if large repositories get slow
+    ## Uncomment if large repositories get slow
     # fsmonitor = true
     # untrackedCache = true
-[column]
-    ui = auto
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
 [branch]
     sort = -committerdate
-[tag]
-    sort = version:refname
 [init]
     defaultBranch = main
 [diff]
@@ -35,10 +37,18 @@
     default = simple
     autoSetupRemote = true
     followTags = true
+[pull]
+    rebase = true
 [fetch]
     prune = true
     pruneTags = true
     all = true
+[commit]
+    verbose = true
+	gpgsign = true
+[tag]
+    sort = version:refname
+	gpgsign = true
 [rerere]
     enabled = true
     autoupdate = true
@@ -46,11 +56,17 @@
     autoSquash = true
     autoStash = true
     updateRefs = true
+[merge]
+    conflictstyle = zdiff3
+    tool = vimdiff
 [help]
     autocorrect = prompt
-
+[column]
+    # ui = auto
 [alias]
     commend = blame
+
+    current-branch = rev-parse --symbolic --abbrev-ref HEAD
 
     #color code and format the logs
     plog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -62,3 +78,13 @@
     take-theirs = checkout --theirs $(git diff --name-only --diff-filter=U)
     add-theirs = add $(git diff --name-only --diff-filter=U)
     update = commit --all --amend --no-edit
+
+[color "status"]
+	header = white
+	added = green
+	updated = green
+	changed = yellow
+	untracked = cyan
+	branch = magenta
+	nobranch = normal
+	unmerged = red

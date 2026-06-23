@@ -1,19 +1,25 @@
-#autoload -U promptinit
-#promptinit
-#prompt bart
+setopt PROMPT_SUBST
 
-function precmd {
-    # Set the terminal-tab title to the current directory's basename.
-    # %1~ is prompt expansion (no subprocess); the old form forked basename+pwd.
-    print -Pn "\e]1;%1~\a"
+precmd() {
+  local exit_code=$?
+
+  if git rev-parse --git-dir >/dev/null 2>&1; then
+    local branch=$(git rev-parse --abbrev-ref HEAD)
+    local repo_root=$(git rev-parse --show-toplevel)
+    local repo_name=$(basename "$repo_root")
+    local rel_path="${PWD#$repo_root}"
+    export DISPLAY_PATH="%F{yellow}.../$repo_name%F{magenta}[$branch]%F{yellow}$rel_path%f"
+  fi
+
+  if [ $exit_code -ne 0 ]; then
+    export EXIT_CODE="%F{red}($exit_code)%f"
+  else
+    export EXIT_CODE=""
+  fi
+
+  export PROMPT_TIME="%F{green}${(%):-%D{%H:%M:%S}%f"
+  export PROMPT_USER_HOST="%F{cyan}%n@%m%f"
+  export PROMPT_SIGNIFIER="${EXIT_CODE}%B$%b"
 }
 
-PROMPT='
-%{%F{blue}%}\
-%(?.[.%20(?.[%U.%S[))\
-%7v\
-%(?.].%20(?.%u].]%s))\
-%b%f%k \
-%{%F{default}%}%8~%b%f%k\
-
-%# '
+PROMPT='${PROMPT_TIME} ${PROMPT_USER_HOST} ${DISPLAY_PATH} ${PROMPT_SIGNIFIER} '
