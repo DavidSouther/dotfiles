@@ -80,11 +80,13 @@
     update = commit --all --amend --no-edit
 
 [color "status"]
-	header = white
-	added = green
-	updated = green
-	changed = yellow
-	untracked = cyan
-	branch = magenta
-	nobranch = normal
-	unmerged = red
+	#header = white
+	#added = green
+	#updated = green
+	#changed = yellow
+	#untracked = cyan
+	#branch = magenta
+	#nobranch = normal
+	#unmerged = red
+[advice]
+	forceDeleteBranch = false

@@ -6,16 +6,17 @@ function fish_prompt
     set_color normal
     printf ' '
 
-    set_color cyan
-    printf '%s@%s' (whoami) (hostname -s)
-    set_color normal
-    printf ' '
-
     if git rev-parse --git-dir >/dev/null 2>&1
         set -l branch (git rev-parse --abbrev-ref HEAD)
         set -l repo_root (git rev-parse --show-toplevel)
         set -l repo_name (basename $repo_root)
         set -l rel_path (string replace $repo_root '' $PWD)
+        set -l git_email (git config user.email)
+
+        set_color cyan
+        printf '%s' $git_email
+        set_color normal
+        printf ' '
 
         set_color yellow
         printf '.../%s' $repo_name
@@ -25,6 +26,11 @@ function fish_prompt
         printf '%s' $rel_path
         set_color normal
     else
+        set_color cyan
+        printf '%s@%s' (whoami) (hostname -s)
+        set_color normal
+        printf ' '
+
         set_color yellow
         printf '%s' (prompt_pwd)
         set_color normal
